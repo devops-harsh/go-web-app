@@ -48,8 +48,9 @@ jobs: # our workflow devided into the following jobs
   docker-push: # 3) our thrid job is to build the docker image and push it on the docker hub 
     runs-on: ubuntu-latest # same running on the ubuntu latest server
 
-    needs: build # do not start this job untill build job was not completed 
-    needs: code-quality
+    needs: 
+     - build # do not start this job untill build job was not completed 
+     - code-quality
 
     steps:
       - name: Checkout repository 
