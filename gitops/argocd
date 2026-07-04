@@ -1,0 +1,32 @@
+1) i used to install the argocd using the 
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+2) Access the Argo cd UI
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+kubectl get service -n argocd
+
+to get an password -
+
+kubectl get secret -n argocd 
+
+kubectl edit secret <-- secret_name--> -n argocd
+
+i have to tranform it to base64 decode
+echo <--secret--> == | base64 --decode
+
+to resert the password - 
+
+kubectl patch secret argocd-secret -n argocd \
+-p '{"data":{"admin.password":null,"admin.passwordMtime":null}}'
+
+kubectl patch secret argocd-secret -n argocd \
+-p '{"data":{"admin.password":null,"admin.passwordMtime":null}}'
+
+kubectl patch secret argocd-secret -n argocd \
+-p '{"data":{"admin.password":null,"admin.passwordMtime":null}}'
+
+
+
+
