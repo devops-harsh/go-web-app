@@ -71,7 +71,7 @@ jobs: # our workflow devided into the following jobs
           context: . # uses the current repo for the build context 
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.run_id }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/go-web-app:${{ github.run_id }}
 
   update-newtag-in-helm-chart: # 4) this is update helm tag value in the helm chart 
     runs-on: ubuntu-latest # same running on the ubuntu latest server
