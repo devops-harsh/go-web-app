@@ -35,6 +35,11 @@ jobs: # our workflow devided into the following jobs
       - name: Checkout repository  # checkout repo
         uses: actions/checkout@v4
 
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
       - name: Run golangci-lint 
         uses: golangci/golangci-lint-action@v6 # go lang linter action which is used to check run multiple linter together and check our code 
         with: 
@@ -44,6 +49,7 @@ jobs: # our workflow devided into the following jobs
     runs-on: ubuntu-latest # same running on the ubuntu latest server
 
     needs: build # do not start this job untill build job was not completed 
+    needs: code-quality
 
     steps:
       - name: Checkout repository 
